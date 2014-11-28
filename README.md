@@ -16,9 +16,14 @@ Is part of the [docker-components][dcomp] repo.
 
 Licensed under MIT License. See [LICENSE file](LICENSE)
 
-Contains unmodified Apache Tomcat 8, which is licensed under [Apache License, Version 2.0][apl].
+
+# Thirdparty
+
+Contains Apache [Tomcat 8][tomcat], which is licensed under [Apache License][apl].
 Also full license can be found in `/opt/tomcat/LICENSE` in container.
 It's components licensing info can be found in `/opt/tomcat/NOTICE` in container.
 
+
 [apl]: http://www.apache.org/licenses/LICENSE-2.0
+[tomcat]: http://tomcat.apache.org/
 
