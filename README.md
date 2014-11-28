@@ -20,6 +20,7 @@ Licensed under MIT License. See [LICENSE file](LICENSE)
 # Thirdparty
 
 Contains Apache [Tomcat 8][tomcat], which is licensed under [Apache License][apl].
+
 Also full license can be found in `/opt/tomcat/LICENSE` in container.
 It's components licensing info can be found in `/opt/tomcat/NOTICE` in container.
 
