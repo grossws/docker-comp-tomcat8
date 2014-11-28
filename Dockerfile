@@ -11,7 +11,7 @@ RUN groupadd -r tomcat \
 ADD logging.properties $CATALINA_HOME/
 ADD server.xml $CATALINA_HOME/
 
-RUN chown -R tomcat:tomcat $CATALINA_HOME
+RUN chown -R tomcat:tomcat /opt
 
 WORKDIR $CATALINA_HOME
 USER tomcat
