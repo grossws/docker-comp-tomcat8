@@ -35,7 +35,11 @@ ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.0.15
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
-RUN curl -sSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
+RUN NEAREST_TOMCAT_TGZ_URL=$(curl -sSL http://www.apache.org/dyn/closer.cgi/${TOMCAT_TGZ_URL#https://www.apache.org/dist/}\?asjson\=1 \
+		| awk '/"path_info": / { pi=$2; }; /"preferred":/ { pref=$2; }; END { print pref " " pi; };' \
+		| sed -r -e 's/^"//; s/",$//; s/" "//') \
+	&& echo "Nearest mirror: $NEAREST_TOMCAT_TGZ_URL" \
+	&& curl -sSL "$NEAREST_TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 	&& curl -sSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
 	&& gpg --verify tomcat.tar.gz.asc \
 	&& tar -xvf tomcat.tar.gz --strip-components=1 \
