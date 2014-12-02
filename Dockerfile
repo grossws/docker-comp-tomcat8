@@ -4,17 +4,12 @@ MAINTAINER Konstantin Gribov <grossws@gmail.com>
 ENV CATALINA_HOME /opt/tomcat
 
 RUN groupadd -r tomcat \
-	&& useradd -r --create-home -g tomcat tomcat \
-	&& yum install -y tar
+	&& useradd -r --create-home -g tomcat tomcat
 
 # $CATALINA_HOME impicitly created adding these files
-ADD logging.properties $CATALINA_HOME/
-ADD server.xml $CATALINA_HOME/
-
-RUN chown -R tomcat:tomcat /opt
+ADD entrypoint.sh server.xml logging.properties $CATALINA_HOME/
 
 WORKDIR $CATALINA_HOME
-USER tomcat
 
 # see https://www.apache.org/dist/tomcat/tomcat-8/KEYS
 RUN gpg --keyserver pgp.mit.edu --recv-keys \
@@ -47,7 +42,9 @@ RUN NEAREST_TOMCAT_TGZ_URL=$(curl -sSL http://www.apache.org/dyn/closer.cgi/${TO
 	&& rm -f bin/*.bat \
 	&& rm -rf webapps/* \
 	&& rm tomcat.tar.gz* \
-	&& mv logging.properties server.xml $CATALINA_HOME/conf/
+	&& mv logging.properties server.xml $CATALINA_HOME/conf/ \
+	&& mv $CATALINA_HOME/entrypoint.sh /
 
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["tomcat"]
 
