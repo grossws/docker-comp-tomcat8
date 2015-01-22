@@ -9,3 +9,5 @@ LANG=en_US.UTF-8
 curl https://www.apache.org/dist/tomcat/tomcat-8/KEYS | gpg --homedir temp-gpg --import &> /dev/null
 gpg --homedir temp-gpg --fingerprint | grep "Key fingerprint = " | sed -r 's/\s+//g;' | cut -d= -f2
 
+rm -rf temp-gpg
+
