@@ -36,7 +36,7 @@ RUN NEAREST_TOMCAT_TGZ_URL=$(curl -sSL http://www.apache.org/dyn/closer.cgi/${TO
 	&& echo "Nearest mirror: $NEAREST_TOMCAT_TGZ_URL" \
 	&& curl -sSL "$NEAREST_TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 	&& curl -sSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
-	&& gpg --verify tomcat.tar.gz.asc \
+	&& gpg --verify tomcat.tar.gz.asc tomcat.tar.gz \
 	&& tar -xvf tomcat.tar.gz --strip-components=1 \
 	&& mkdir -p conf/Catalina/localhost \
 	&& rm -f bin/*.bat \
