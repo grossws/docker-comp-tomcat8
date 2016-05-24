@@ -27,7 +27,7 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys \
   F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23
 
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.0.20
+ENV TOMCAT_VERSION 8.0.35
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN NEAREST_TOMCAT_TGZ_URL=$(curl -sSL http://www.apache.org/dyn/closer.cgi/${TOMCAT_TGZ_URL#https://www.apache.org/dist/}\?asjson\=1 \
