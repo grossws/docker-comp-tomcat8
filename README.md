@@ -2,14 +2,14 @@
 
 Tomcat8 basic [Dockerfiles][df] for automated builds on [docker hub][dhub].
 
-Based on `grossws/java7` image and official Docker `tomcat` [image][tomcat-official].
+Based on `grossws/java` image and official Docker `tomcat` [image][tomcat-official].
 
 Is part of the [docker-components][dcomp] repo.
 
 [df]: http://docs.docker.com/reference/builder/ "Dockerfile reference"
 [dhub]: https://hub.docker.com/u/grossws/
 [dcomp]: https://github.com/grossws/docker-components
-[tomcat-official]: https://github.com/docker-library/tomcat/blob/master/8-jre7/Dockerfile
+[tomcat-official]: https://github.com/docker-library/tomcat/blob/master/8.0/jre8/Dockerfile
 
 
 # Licensing

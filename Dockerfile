@@ -1,4 +1,4 @@
-FROM grossws/java7
+FROM grossws/java
 MAINTAINER Konstantin Gribov <grossws@gmail.com>
 
 ENV CATALINA_HOME /opt/tomcat
