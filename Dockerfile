@@ -1,7 +1,7 @@
 FROM grossws/java
 MAINTAINER Konstantin Gribov <grossws@gmail.com>
 
-ENV CATALINA_HOME /opt/tomcat
+ENV CATALINA_HOME=/opt/tomcat
 
 ARG UID=200
 RUN useradd -r --create-home -g nobody -u $UID tomcat
@@ -23,7 +23,7 @@ RUN gpg --recv-keys $(curl https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJ
   && curl -sSL "$NEAREST_TOMCAT_TGZ_URL" -o tomcat.tar.gz \
   && curl -sSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
   && gpg --verify tomcat.tar.gz.asc tomcat.tar.gz \
-  && tar -xvf tomcat.tar.gz --strip-components=1 \
+  && tar -xf tomcat.tar.gz --strip-components=1 \
   && mkdir -p conf/Catalina/localhost \
   && rm -f bin/*.bat \
   && rm -rf webapps/* \
