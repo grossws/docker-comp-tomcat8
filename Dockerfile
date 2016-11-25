@@ -26,9 +26,9 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys \
   9BA44C2621385CB966EBA586F72C284D731FABEE \
   F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23
 
-ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.0.39
-ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+ARG TOMCAT_MAJOR=8
+ARG TOMCAT_VERSION=8.0.39
+ARG TOMCAT_TGZ_URL=https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN NEAREST_TOMCAT_TGZ_URL=$(curl -sSL http://www.apache.org/dyn/closer.cgi/${TOMCAT_TGZ_URL#https://www.apache.org/dist/}\?asjson\=1 \
     | awk '/"path_info": / { pi=$2; }; /"preferred":/ { pref=$2; }; END { print pref " " pi; };' \
