@@ -3,8 +3,8 @@ MAINTAINER Konstantin Gribov <grossws@gmail.com>
 
 ENV CATALINA_HOME /opt/tomcat
 
-RUN groupadd -r tomcat \
-  && useradd -r --create-home -g tomcat tomcat
+ARG UID=200
+RUN useradd -r --create-home -g nobody -u $UID tomcat
 
 # $CATALINA_HOME impicitly created adding these files
 ADD entrypoint.sh server.xml logging.properties $CATALINA_HOME/
