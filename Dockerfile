@@ -12,7 +12,7 @@ ADD entrypoint.sh server.xml logging.properties $CATALINA_HOME/
 WORKDIR $CATALINA_HOME
 
 ARG TOMCAT_MAJOR=8
-ARG TOMCAT_VERSION=8.0.46
+ARG TOMCAT_VERSION=8.0.47
 ARG TOMCAT_TGZ_URL=https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN gpg --recv-keys $(curl https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/KEYS | gpg --with-fingerprint --with-colons | grep fpr | cut -d: -f10) \
